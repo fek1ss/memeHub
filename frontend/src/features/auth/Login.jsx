@@ -32,6 +32,7 @@ const Login = () => {
   return (
     <div className={styles.auth}>
       <form onSubmit={handleLogin} className={styles.form_auth}>
+        <h1>Login</h1>
         <input
           className={styles.auth_inp}
           type="text"

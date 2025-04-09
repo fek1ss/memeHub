@@ -4,10 +4,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Quicksand", sans-serif;
+  font-weight: normal;
 }
 
 .auth_switcher {
+
   margin: 10px auto;
+}
+
+.auth_switcher button {
+  font-family: "Quicksand", sans-serif;
+}
+
+.auth_switcher .btn_green {
+  background-color: var(--btn-color);
+}
+
+.auth_switcher .btn_yellow {
+  background-color: var(--main-color);
 }
 
 .form_auth {
@@ -37,9 +52,11 @@
 }
 
 .btn_green {
+  font-family: "Quicksand", sans-serif;
   background-color: var(--btn-color);
 }
 
 .btn_yelow {
+  font-family: "Quicksand", sans-serif;
   background-color: var(--main-color);
 }

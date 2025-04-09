@@ -4,6 +4,7 @@ const SignUp = () => {
   return (
     <div className={styles.auth}>
       <form action="submit" className={styles.form_auth}>
+        <h1>Sign Up</h1>
         <input
           className={styles.auth_inp}
           type="text"
