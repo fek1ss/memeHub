@@ -1,64 +1,90 @@
 {
   "roles": [
-    { "id": 1, "name": "admin" },
-    { "id": 2, "name": "moderator" },
-    { "id": 3, "name": "user" }
+    {
+      "id": "1",
+      "name": "admin"
+    },
+    {
+      "id": "2",
+      "name": "moderator"
+    },
+    {
+      "id": "3",
+      "name": "user"
+    }
   ],
-
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "admin1",
       "password": "adminpass",
       "role_id": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "mod1",
       "password": "modpass",
       "role_id": 2
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "user1",
       "password": "userpass",
       "role_id": 3
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "user2",
       "password": "userpass",
       "role_id": 3
+    },
+    {
+      "id": "0662",
+      "username": "user",
+      "password": "1234"
+    },
+    {
+      "id": "cddb",
+      "username": "user",
+      "password": "1234"
+    },
+    {
+      "id": "f8d7",
+      "username": "Samir",
+      "password": "1234"
+    },
+    {
+      "id": "af8e",
+      "username": "anuar",
+      "password": "$2b$10$JBX8Ru5DwALuzjXNZHI.ueHE1yHHOMnDSgYT33Bo8fYJSnWXNAU6G"
     }
   ],
-
   "memes": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Funny Cat",
       "image_url": "https://example.com/cat.jpg",
       "creator_id": 3,
       "created_at": "2025-04-08T10:00:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Programmer Life",
       "image_url": "https://example.com/code.jpg",
       "creator_id": 4,
       "created_at": "2025-04-08T11:30:00Z"
     }
   ],
-
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "meme_id": 1,
       "author_id": 2,
       "text": "LOL! This is hilarious 😂",
       "created_at": "2025-04-08T12:00:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "meme_id": 2,
       "author_id": 1,
       "text": "Very relatable!",

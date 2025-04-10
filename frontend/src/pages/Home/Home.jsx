@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 import MemeList from './../../components/MemeList/MemeList';
 
 const Home = () => {
-  const [cards, setCards] = useState();
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:8080/memes')
