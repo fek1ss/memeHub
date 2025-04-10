@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import MemeCard from './../MemeCard/MemeCard';
 
-const MemeList = ({ cards, users }) => {
+const MemeList = ({ cards, users, handleDelete }) => {
   return (
     <div className={styles.memList}>
       {cards.map(card => (
@@ -12,6 +12,8 @@ const MemeList = ({ cards, users }) => {
           created_at={card.created_at}
           creator_id={card.creator_id}
           users={users}
+          id={card.id}
+          handleDelete={handleDelete}
         />
       ))}
     </div>

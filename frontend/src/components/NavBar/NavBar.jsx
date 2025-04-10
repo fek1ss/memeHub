@@ -16,11 +16,18 @@ const NavBar = () => {
 
   return (
     <nav className={styles.navBar}>
-      <Link to="/" className={styles.link} >Home</Link>  &nbsp;
+      <Link to="/" className={styles.link}>
+        Home
+      </Link>{' '}
+      &nbsp;
       {user ? (
         <>
-          <Link to="/dashboard">Dashboard</Link>  &nbsp;
-          <Link to="/products">Products</Link>  &nbsp;
+          <button
+            onClick={() => navigate('/profile')}
+            className={styles.account}
+          >
+            profile
+          </button>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (

@@ -3,4 +3,7 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  background-color: var(--background-color);
+  background-size: auto;
+  height: 100vh;
 }

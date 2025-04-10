@@ -23,7 +23,7 @@ const Login = () => {
           token: response.token,
         }),
       );
-      navigate('/dashboard');
+      navigate('/');
     } else {
       setMessage(response.message);
     }
@@ -49,7 +49,7 @@ const Login = () => {
           placeholder="password: "
           required
         />
-        {message}
+        <p className="error">{message}</p>
         <button type="submit" className={styles.btn_green}>
           login
         </button>

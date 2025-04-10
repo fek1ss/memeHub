@@ -4,11 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Login from './Login';
 import SignUp from './SignUp';
 import styles from '../../styles/auth.module.css';
-// import { useSelector } from 'react-redux';
 
 const AuthFlipContainer = () => {
   const [isLoginView, setIsLoginView] = useState(true);
-  // const user = useSelector(state => state.auth.user);
 
   return (
     <div className={styles.auth}>
