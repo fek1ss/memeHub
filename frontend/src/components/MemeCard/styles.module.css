@@ -1,28 +1,15 @@
 .memCard {
-    border: 1px solid #ccc; /* Добавляем обводку */
-    padding: 16px; /* Добавляем отступы */
-    margin: 10px 0; /* Отступы между карточками */
-    border-radius: 8px; /* Скругление углов */
-    background-color: #f9f9f9; /* Цвет фона */
-    display: flex;
-    flex-direction: column; /* Стили для вертикального расположения элементов */
-    align-items: center; /* Выравнивание по центру */
-    max-width: 300px;
+  width: 600px;
+  border: none;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
 }
 
 .memCard img {
-    max-width: 100%;
-    border-radius: 4px;
-}
-
-.memCard h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin: 10px 0;
-}
-
-.memCard p {
-    font-size: 1rem;
-    color: #666; /* Цвет текста */
-    margin: 5px 0; /* Отступы сверху и снизу */
+  width: 350px;
 }
