@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // // src/features/auth/authAPI.js
 
 // const API_BASE = 'http://localhost:8080/api';
@@ -23,18 +22,11 @@
 
 import bcrypt from 'bcryptjs';
 import API_URL from '../baseUrl';
-=======
-const API_URL = 'http://localhost:8080';
->>>>>>> origin/main
 
 export const loginRequest = async ({ username, password }) => {
   try {
     const response = await fetch(
-<<<<<<< HEAD
       `${API_URL}/users?username=${username}`,
-=======
-        `${API_URL}/users?username=${username}&${password}`,
->>>>>>> origin/main
     );
     const users = await response.json();
 
