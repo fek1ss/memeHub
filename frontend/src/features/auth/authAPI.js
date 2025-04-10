@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // // src/features/auth/authAPI.js
 
 // const API_BASE = 'http://localhost:8080/api';
@@ -22,11 +23,18 @@
 
 import bcrypt from 'bcryptjs';
 import API_URL from '../baseUrl';
+=======
+const API_URL = 'http://localhost:8080';
+>>>>>>> origin/main
 
 export const loginRequest = async ({ username, password }) => {
   try {
     const response = await fetch(
+<<<<<<< HEAD
       `${API_URL}/users?username=${username}`,
+=======
+        `${API_URL}/users?username=${username}&${password}`,
+>>>>>>> origin/main
     );
     const users = await response.json();
 
@@ -51,6 +59,32 @@ export const loginRequest = async ({ username, password }) => {
     };
   } catch (err) {
     console.error('Login error:', err);
+    return {
+      ok: false,
+      message: 'Server error',
+    };
+  }
+};
+
+export const registerRequest = async ({ username, password }) => {
+  try {
+    const res = await fetch(`${API_URL}/users`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (res.ok) {
+      return { ok: true };
+    }
+
+    const data = await res.json();
+    return {
+      ok: false,
+      message: data.message || 'Registration failed',
+    };
+  } catch (err) {
+    console.log('catch error', err);
     return {
       ok: false,
       message: 'Server error',

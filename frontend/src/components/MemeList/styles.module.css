@@ -1,5 +1,14 @@
 .memList {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+=======
+    display: flex;
+    flex-wrap: wrap; /* Автоматический перенос элементов на следующую строку */
+    justify-content: space-around; /* Распределение элементов по ширине */
+    gap: 20px; /* Отступы между карточками */
+    padding: 20px; /* Отступы вокруг списка */
+}
+>>>>>>> origin/main
