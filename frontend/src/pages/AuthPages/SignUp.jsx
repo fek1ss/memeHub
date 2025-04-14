@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import styles from '../../styles/auth.module.css';
-import bcrypt from 'bcryptjs';
-import { useNavigate } from 'react-router-dom';
+import { registerRequest } from '../../services/authAPI';
 
 const SignUp = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -19,49 +17,35 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = async e => {
+  const handleRegister = async e => {
     e.preventDefault();
 
     const { username, password, confirmPassword } = formData;
 
-    if (password !== confirmPassword) {
-      setMessage('Passwords do not match!');
-      return;
-    }
-
-    const checkRes = await fetch(
-      `http://localhost:8080/users?username=${username}`,
-    );
-    const existingUsers = await checkRes.json();
-
-    if (existingUsers.length > 0) {
-      setMessage('User already exists');
-      return;
-    }
-
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(password, salt);
-
-    const newUser = {
+    const response = await registerRequest({
       username,
-      password: hashedPassword,
-      role_id: 3,
-    };
-
-    await fetch('http://localhost:8080/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newUser),
+      password,
+      confirmPassword,
     });
 
-    setFormData({ username: '', password: '', confirmPassword: '' });
-    navigate('/login');
+    if (response.ok) {
+      setFormData({
+        username: '',
+        password: '',
+        confirmPassword: '',
+      });
+      setMessage(
+        `Registration was successful, please log in to your account.`,
+      );
+    } else {
+      setMessage(response.message);
+    }
   };
 
   return (
     <div className={styles.auth}>
-      <form onSubmit={handleSubmit} className={styles.form_auth}>
-        <h1>Sign Up</h1>
+      <form onSubmit={handleRegister} className={styles.form_auth}>
+        <h1 className={styles.auth_h1}>Sign Up</h1>
         <input
           className={styles.auth_inp}
           type="text"

@@ -3,9 +3,9 @@ import styles from './styles.module.css';
 import MemeList from './../../components/MemeList/MemeList';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import usersRequest from '../../features/users/usersAPI';
-import memeRequest from '../../features/memes/memeAPI';
-import API_URL from './../../features/baseUrl';
+import { deleteMeme } from '../../services/memeService';
+import { getAllMemes } from './../../services/memeService';
+import { getAllUsers } from './../../services/userService';
 
 const Home = () => {
   const [cards, setCards] = useState([]);
@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     if (user) {
-      memeRequest()
+      getAllMemes()
         .then(response => {
           setCards(response.memes);
         })
@@ -22,7 +22,7 @@ const Home = () => {
           console.error('Error fetching memes: ', err);
         });
 
-      usersRequest()
+      getAllUsers()
         .then(response => {
           setUsers(response.users);
         })
@@ -36,17 +36,15 @@ const Home = () => {
 
   // функция удаления мема
   const handleDelete = async id => {
-    try {
-      const response = await fetch(`${API_URL}/memes/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) setCards(cards.filter(card => card.id !== id));
-      else {
-        alert('Failed to delete meme');
+    if (confirm('Are you than you want to delete this meme?')) {
+      try {
+        await deleteMeme(id);
+        setCards(cards.filter(card => card.id !== id));
+      } catch (error) {
+        console.error('Error deleting meme:', error);
       }
-    } catch (error) {
-      console.error('Error deleting meme:', error);
+    } else {
+      console.log('the user canceled the removal of the meme');
     }
   };
 
@@ -59,7 +57,7 @@ const Home = () => {
           handleDelete={handleDelete}
         />
       ) : (
-        <p>
+        <p className={styles.home_p}>
           Please <Link to="/login">log in</Link> to access more
           features.
         </p>

@@ -2,9 +2,12 @@ import styles from './styles.module.css';
 import MemeList from './../../components/MemeList/MemeList';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import memeRequest from './../../features/memes/memeAPI';
-import usersRequest from './../../features/users/usersAPI';
-import API_URL from '../../features/baseUrl';
+import {
+  getAllMemes,
+  createMeme,
+} from './../../services/memeService';
+import { getAllUsers } from './../../services/userService';
+import { deleteMeme } from '../../services/memeService';
 
 const Profile = () => {
   const user = useSelector(state => state.auth.user);
@@ -17,9 +20,17 @@ const Profile = () => {
     value: '',
   });
 
+  const handleFileChange = e => {
+    setImage_url(e.target.value);
+  };
+
+  const handleTitleChange = e => {
+    setTitle(e.target.value);
+  };
+
   useEffect(() => {
     if (user) {
-      memeRequest(user.id)
+      getAllMemes(user.id)
         .then(response => {
           setCards(response.memes);
         })
@@ -27,7 +38,7 @@ const Profile = () => {
           console.error('Error fetching memes: ', err);
         });
 
-      usersRequest()
+      getAllUsers()
         .then(response => {
           setUsers(response.users);
         })
@@ -42,27 +53,18 @@ const Profile = () => {
   // ===============================================
   // функция удаления мема
   const handleDelete = async id => {
-    try {
-      const response = await fetch(`${API_URL}/memes/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) setCards(cards.filter(card => card.id !== id));
-      else {
-        alert('Failed to delete meme');
+    if (confirm('Are you than you want to delete this meme?')) {
+      try {
+        await deleteMeme(id);
+        setCards(cards.filter(card => card.id !== id));
+      } catch (error) {
+        console.error('Error deleting meme:', error);
       }
-    } catch (error) {
-      console.error('Error deleting meme:', error);
+    } else {
+      console.log('the user canceled the removal of the meme');
     }
   };
   // ===============================================
-  const handleFileChange = e => {
-    setImage_url(e.target.value);
-  };
-
-  const handleTitleChange = e => {
-    setTitle(e.target.value);
-  };
 
   const handleAddMeme = async e => {
     e.preventDefault();
@@ -85,27 +87,25 @@ const Profile = () => {
     };
 
     try {
-      const memeResponse = await fetch(`${API_URL}/memes`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(meme),
-      });
-
-      if (!memeResponse.ok) {
-        throw new Error('Failed to add meme');
+      const res = await createMeme(meme);
+      if (!res.ok) {
+        setMessage({
+          error: res.ok,
+          value: res.message,
+        });
       }
 
       updateList(meme);
       setMessage({
-        error: false,
-        value: 'Meme added successfully:',
+        error: res.ok,
+        value: res.message,
       });
       setTimeout(() => {
         setMessage({
           error: false,
           value: '',
         });
-      }, 2000);
+      }, 1000);
     } catch (err) {
       setMessage({ error: true, value: `Server error: ${err}` });
     }
@@ -118,6 +118,7 @@ const Profile = () => {
 
   return (
     <div className={styles.profile_page}>
+      <h1>{user.username}</h1>
       <form onSubmit={handleAddMeme} className={styles.addMem}>
         <input
           type="text"
@@ -134,7 +135,9 @@ const Profile = () => {
         <button type="submit" className={styles.btn}>
           Submit
         </button>
-        <p>{message.value}</p>
+        <p className={message.error ? styles.error : styles.access}>
+          {message.value}
+        </p>
       </form>
       <MemeList
         cards={cards}

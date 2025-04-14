@@ -1,51 +1,74 @@
 {
-  "roles": [
-    {
-      "id": "1",
-      "name": "admin"
-    },
-    {
-      "id": "2",
-      "name": "moderator"
-    },
-    {
-      "id": "3",
-      "name": "user"
-    }
-  ],
   "users": [
     {
       "id": "1",
       "username": "damir",
       "password": "$2b$10$YGfd.PxtJfQf.v9eOr9u2.rB7Imq0tGizWJTmdpsZm.AR2i04GBcW",
-      "role_id": 1
+      "role": "admin"
     },
     {
       "id": "9861",
       "username": "damir111@gmail.com",
       "password": "$2b$10$yiz7n2x.EUivjVErElLDCeUAg.aVqdXtJuSSWx2FvRhP5J/Hs70bi",
-      "role_id": 3
+      "role": "user"
     },
     {
       "id": "4f03",
       "username": "anuar",
       "password": "$2b$10$.CYvnL4VxjtdClv1PP4DNOWvz4QWnT4L7BY4P3Ip20zBpqjWMkeZK",
-      "role_id": 2
+      "role": "moderator"
     },
     {
       "id": "d338",
       "username": "dam",
       "password": "$2b$10$Ogemp7eFn/oscNgXlWsuUOHap2AM9eNMLTuxkwbCTve6RCh/BXcDu",
-      "role_id": 3
+      "role": "user"
+    },
+    {
+      "id": "1119",
+      "username": "aza@gmail.com",
+      "password": "$2b$10$cSAa3rP/n9ueZdeziBSWvuSaQffhV8LR3iWbuh6s7Fgukc2uRuYse",
+      "role": "admin"
+    },
+    {
+      "id": "56ee",
+      "username": "fekis",
+      "password": "$2b$10$wyGmWH87j9NPtQ2KYN63ouGy0ssgCot8DEX8PWaPmPFF2T3rwlpkW",
+      "role": "user"
+    },
+    {
+      "id": "8fc6",
+      "username": "danya",
+      "password": "$2b$10$DmP4F4au3iZB06TMbPTQ4OYigokHLOxHZmq.in.MoDINvI5wRiDSW",
+      "role": "user"
+    },
+    {
+      "id": "8b5f",
+      "username": "fikus",
+      "password": "$2b$10$vNsZtx.pBBGWmmaqBuAPoeAwcqrewAb6yn2LExviuJ.HjMr.rMWwq",
+      "role": "user"
+    },
+    {
+      "id": "d32d",
+      "username": "gorilla",
+      "password": "$2b$10$ctgDLRD2OHegZ/khpC5X..Yl7v1NH3W90dWZRvaz0CG8DNUe0kP2C",
+      "role": "user"
     }
   ],
   "memes": [
     {
-      "id": "4ed4",
-      "title": "dsaf",
-      "image_url": "https://ih1.redbubble.net/image.5306918381.5741/st,small,507x507-pad,600x600,f8f8f8.jpg",
-      "created_at": "01:41",
-      "creator_id": "4f03"
+      "id": "927b",
+      "title": "fdasf",
+      "image_url": "https://i.ytimg.com/vi/sM61MuLvFrg/maxresdefault.jpg",
+      "created_at": "09:56",
+      "creator_id": "1"
+    },
+    {
+      "id": "afdd",
+      "title": "adfs",
+      "image_url": "fad",
+      "created_at": "17:39",
+      "creator_id": "9861"
     }
   ],
   "comments": [

@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import styles from './styles.module.css';
-import API_URL from '../../features/baseUrl';
 import { useLocation } from 'react-router-dom';
 
 const MemeCard = ({
@@ -25,8 +24,8 @@ const MemeCard = ({
       <div className={styles.panel}>
         <div className={styles.comments}></div>
       </div>
-      {(user.role_id === 1 ||
-        user.role_id === 2 ||
+      {(user.role === 'admin' ||
+        user.role === 'moderator' ||
         location.pathname === '/profile') && (
         <button onClick={() => handleDelete(id)}>delete</button>
       )}

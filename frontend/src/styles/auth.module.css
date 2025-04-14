@@ -4,28 +4,37 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: normal;
+  background-color: var(--off-white);
+  color: var(--main-color);
+}
+
+.auth_h1 {
+  color: var(--off-white);
 }
 
 .auth_switcher {
-
   margin: 10px auto;
 }
 
 .auth_switcher button {
-  font-family: "Quicksand", sans-serif;
-}
-
-.auth_switcher .btn_green {
-  background-color: var(--btn-color);
-}
-
-.auth_switcher .btn_yellow {
+  font-family: 'Quicksand', sans-serif;
   background-color: var(--main-color);
 }
 
+.btn_login:disabled {
+  background-color: #3b589860;
+  color: var(--light-grey);
+}
+
+.btn_register:disabled {
+  background-color: #3b589860;
+  color: var(--light-grey);
+}
+
 .form_auth {
+  background-color: var(--main-color);
   border: none;
   width: 300px;
   height: 350px;
@@ -35,28 +44,25 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
 }
 
 .auth_inp {
   padding: 10px 20px;
   margin: 5px;
   width: 200px;
+  border: none;
   border-radius: 8px;
-
-  border: 1px solid rgb(0, 0, 0);
 }
 
 .auth_inp:focus {
   box-shadow: 0px 0px 10px 1px rgb(0, 0, 0);
 }
 
-.btn_green {
-  font-family: "Quicksand", sans-serif;
+.btn_login {
   background-color: var(--btn-color);
 }
 
-.btn_yelow {
-  font-family: "Quicksand", sans-serif;
+.btn_register {
   background-color: var(--main-color);
 }

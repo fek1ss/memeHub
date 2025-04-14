@@ -4,9 +4,8 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import Login from './features/auth/Login';
-import SignUp from './features/auth/SignUp';
-import AuthContainer from './features/auth/AuthContainer';
+import Login from './pages/AuthPages/Login';
+import AuthContainer from './pages/AuthPages/AuthContainer';
 import { useSelector } from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home/Home';
