@@ -68,7 +68,7 @@ const Profile = () => {
 
   const handleAddMeme = async e => {
     e.preventDefault();
-    if (!title || !image_url) {
+    if (!image_url) {
       setMessage({
         error: true,
         value: 'Please provide title or image mem',
@@ -94,7 +94,6 @@ const Profile = () => {
           value: res.message,
         });
       }
-
       updateList(meme);
       setMessage({
         error: res.ok,
@@ -118,12 +117,14 @@ const Profile = () => {
 
   return (
     <div className={styles.profile_page}>
-      <h1>{user.username}</h1>
+      <h1 className={styles.welcome}>
+        Welcome <p className={styles.username}>{user.username}</p>
+      </h1>
       <form onSubmit={handleAddMeme} className={styles.addMem}>
         <input
           type="text"
           onChange={handleFileChange}
-          placeholder="image mem: "
+          placeholder="Link image mem: "
           className={styles.inp_profile}
         />
         <input

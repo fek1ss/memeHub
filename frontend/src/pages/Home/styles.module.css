@@ -4,7 +4,6 @@
   justify-content: center;
   background-color: var(--background-color);
   background-size: cover;
-  height: 200vh;
 }
 
 .home_p {
@@ -12,9 +11,5 @@
 }
 
 .home_p a {
-  color: var(--background-color);
-}
-
-.home_p a:hover {
-  color: var(--background-color);
+  color: var(--light-grey);
 }

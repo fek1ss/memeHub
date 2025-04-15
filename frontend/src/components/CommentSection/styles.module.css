@@ -1,0 +1,33 @@
+.myComment {
+  text-align: right;
+  background-color: #d8eaff;
+  margin-left: auto;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 12px 12px 0 12px;
+  max-width: 80%;
+}
+
+.otherComment {
+  text-align: left;
+  background-color: #f0f0f0;
+  margin-right: auto;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 12px 12px 12px 0;
+  max-width: 80%;
+}
+
+.inp_comment {
+  border: none;
+  border-radius: 8px;
+  padding: 7px 15px;
+}
+
+.author_comment {
+  background-color: var(--secondary-blue);
+  border-radius: 8px;
+  padding: 1px 5px;
+}

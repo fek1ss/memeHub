@@ -17,6 +17,10 @@
   background-color: var(--main-color);
 }
 
+.error {
+  color: red;
+}
+
 #root {
   height: 100vh;
 }

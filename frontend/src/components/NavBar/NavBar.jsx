@@ -24,11 +24,16 @@ const NavBar = () => {
         <>
           <button
             onClick={() => navigate('/profile')}
-            className={styles.account}
+            className={`${styles.account} ${styles.btn}`}
           >
-            profile
+            Profile
           </button>
-          <button onClick={handleLogout}>Logout</button>
+          <button
+            onClick={handleLogout}
+            className={`${styles.logout_btn} ${styles.btn}`}
+          >
+            Logout
+          </button>
         </>
       ) : (
         <Link to="/login">Login</Link>
