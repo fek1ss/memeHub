@@ -1,12 +1,49 @@
-# React + Vite
+# MemHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## main folders:
 
-Currently, two official plugins are available:
+    components
+      CommentSection
+      MemeCard
+      MemeList
+      NavBar
+    pages
+      AuthPages
+      Dashboard
+      Home
+      Profile
+    reducers
+      AuthReducer.js
+    services
+      authAPI.js
+      memeService.js
+      userService.js
+    store
+      store.js
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## services
 
-## Expanding the ESLint configuration
+**memeService.js** - работает с мемами (основной контент проекта).
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Примеры функций:
+
+- getAllMemes(creator_id) — получить все мемы или получить конкретный мем по id
+
+- createMeme(memeData) — создать новый мем;
+
+- updateMeme(id, memeData) — изменить;
+
+- deleteMeme(id) — удалить.
+
+Функции используются:  
+&nbsp;&nbsp; getAllMemes --> Home.jsx, Profile.jsx  
+&nbsp;&nbsp; createMeme --> Profile.jsx  
+&nbsp;&nbsp; deleteMeme --> Home.jsx, Profile.jsx
+
+**authAPI.js** - имеет две функции для входа и регистрации
+
+- loginRequest
+- registerRequest
+
+**userService.js** - операции (запросы) с юзерами
+пока есть только функция получения всех пользователей
