@@ -1,18 +1,26 @@
 import { useEffect, useState } from 'react';
 import {
   addComment,
-  getAllComments,
+  getComments,
 } from '../../services/commentService';
 import { useSelector } from 'react-redux';
 import styles from './styles.module.css';
-// import { getAllMemes } from './../../services/memeService';
+import { getAllUsers } from './../../services/userService';
 
 const CommentSection = ({ mememId }) => {
   const user = useSelector(state => state.auth.user);
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
+  const [users, setUsers] = useState([]);
   useEffect(() => {
-    getAllComments(mememId)
+    getAllUsers()
+      .then(res => {
+        setUsers(res.users);
+        console.log(users);
+      })
+      .catch(err => console.log('Error fetching comments:', err));
+
+    getComments(mememId)
       .then(res => setComments(res.comments))
       .catch(err => console.log('Error fetching comments:', err));
   }, []);
@@ -23,9 +31,6 @@ const CommentSection = ({ mememId }) => {
 
   const handleAddComment = async e => {
     e.preventDefault();
-    if (!comment) {
-      return;
-    }
 
     const commentUser = {
       meme_id: mememId,
@@ -51,23 +56,28 @@ const CommentSection = ({ mememId }) => {
   return (
     <div className="section">
       <div className="comments">
-        {comments.map(comment => (
-          <div
-            key={comment.id}
-            className={
-              comment.author_id === user.id
-                ? styles.myComment
-                : styles.otherComment
-            }
-          >
-            <h5 className={styles.author_comment}>
-              {comment.author_id}
-            </h5>
-            <p>{comment.text}</p>
-          </div>
-        ))}
+        {comments.map(comment => {
+          const author = users.find(
+            user => user.id === comment.author_id,
+          );
+          return (
+            <div
+              key={comment.id}
+              className={
+                comment.author_id === user.id
+                  ? styles.myComment
+                  : styles.otherComment
+              }
+            >
+              <h5 className={styles.author_comment}>
+                {author ? author.username : 'Uknown author'}
+              </h5>
+              <p>{comment.text}</p>
+            </div>
+          );
+        })}
       </div>
-      <div className="submit_comment">
+      <div className={styles.submit_comment}>
         <input
           className={styles.inp_comment}
           type="text"

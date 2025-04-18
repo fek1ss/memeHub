@@ -1,10 +1,9 @@
 const API = 'http://localhost:8080/comments';
 
 // GET
-export const getAllComments = async meme_id => {
+export const getComments = async meme_id => {
   try {
-    const url = meme_id ? `${API}?meme_id=${meme_id}` : `${API}`;
-    const response = await fetch(url);
+    const response = await fetch(`${API}?meme_id=${meme_id}`);
     if (response.ok) {
       const comments = await response.json();
       return {

@@ -11,6 +11,12 @@
   border-radius: 20px;
 }
 
+.headerRow {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+}
+
 .memCard img {
   width: 350px;
 }
@@ -37,4 +43,10 @@
 .comment {
   cursor: pointer;
   font-size: 25px;
+}
+
+.panel {
+  max-height: 350px;
+  width: 100%;
+  overflow-y: auto;
 }

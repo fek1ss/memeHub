@@ -86,28 +86,26 @@ const Profile = () => {
       creator_id: user.id,
     };
 
-    try {
-      const res = await createMeme(meme);
-      if (!res.ok) {
-        setMessage({
-          error: res.ok,
-          value: res.message,
-        });
-      }
-      updateList(meme);
+    const res = await createMeme(meme);
+    if (!res.ok) {
       setMessage({
         error: res.ok,
         value: res.message,
       });
-      setTimeout(() => {
-        setMessage({
-          error: false,
-          value: '',
-        });
-      }, 1000);
-    } catch (err) {
-      setMessage({ error: true, value: `Server error: ${err}` });
     }
+    updateList(meme);
+    setTitle('');
+    setImage_url('');
+    setMessage({
+      error: res.ok,
+      value: res.message,
+    });
+    setTimeout(() => {
+      setMessage({
+        error: false,
+        value: '',
+      });
+    }, 1000);
   };
   // =================
   // Обновление списка мемов
@@ -117,20 +115,20 @@ const Profile = () => {
 
   return (
     <div className={styles.profile_page}>
-      <h1 className={styles.welcome}>
-        Welcome <p className={styles.username}>{user.username}</p>
-      </h1>
+      <h1 className={styles.welcome}>Welcome {user.username}</h1>
       <form onSubmit={handleAddMeme} className={styles.addMem}>
         <input
           type="text"
           onChange={handleFileChange}
           placeholder="Link image mem: "
+          value={image_url}
           className={styles.inp_profile}
         />
         <input
           type="text"
           onChange={handleTitleChange}
           placeholder="title mem: "
+          value={title}
           className={styles.inp_profile}
         />
         <button type="submit" className={styles.btn}>

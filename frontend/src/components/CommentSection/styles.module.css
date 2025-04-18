@@ -23,11 +23,16 @@
 .inp_comment {
   border: none;
   border-radius: 8px;
-  padding: 7px 15px;
+  padding: 7px 30px;
 }
 
 .author_comment {
-  background-color: var(--secondary-blue);
   border-radius: 8px;
   padding: 1px 5px;
+}
+
+.submit_comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

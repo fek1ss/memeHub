@@ -3,6 +3,7 @@ import styles from './styles.module.css';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import CommentSection from '../CommentSection/CommentSection';
+import OptionsMenu from '../../components/OptionsMenu';
 
 const MemeCard = ({
   title,
@@ -20,6 +21,14 @@ const MemeCard = ({
 
   return (
     <div className={styles.memCard}>
+      {(user.role === 'admin' ||
+        user.role === 'moderator' ||
+        location.pathname === '/profile') && (
+        <div className={styles.headerRow}>
+          <OptionsMenu onDelete={handleDelete} memeId={id} />
+        </div>
+      )}
+
       <img src={image_url} alt="meme image" />
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.container}>
@@ -39,11 +48,6 @@ const MemeCard = ({
       </div>
 
       <div className={styles.panel}>
-        {(user.role === 'admin' ||
-          user.role === 'moderator' ||
-          location.pathname === '/profile') && (
-          <button onClick={() => handleDelete(id)}>delete</button>
-        )}
         {isOpen && <CommentSection mememId={id} />}
       </div>
     </div>
