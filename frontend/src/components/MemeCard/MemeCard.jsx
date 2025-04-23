@@ -19,13 +19,24 @@ const MemeCard = ({
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
+  const currentMeme = {
+    id,
+    title,
+    image_url,
+    created_at,
+    creator_id,
+  };
+
   return (
     <div className={styles.memCard}>
       {(user.role === 'admin' ||
-        user.role === 'moderator' ||
         location.pathname === '/profile') && (
         <div className={styles.headerRow}>
-          <OptionsMenu onDelete={handleDelete} memeId={id} />
+          <OptionsMenu
+            onDelete={handleDelete}
+            memeId={id}
+            meme={currentMeme}
+          />
         </div>
       )}
 
@@ -44,6 +55,7 @@ const MemeCard = ({
             💬
           </span>
           <span>👍</span>
+          <button onClick={() => handleDelete(id)} className={styles.btn_delete}>delete</button>
         </div>
       </div>
 

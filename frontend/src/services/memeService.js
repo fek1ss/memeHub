@@ -58,11 +58,15 @@ export const createMeme = async meme => {
 export const updateMeme = async (id, meme) => {
   try {
     const res = await fetch(`${API}/${id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(meme),
     });
-    if (!res.ok) throw new Error('Failed to update meme!');
+    if (!res.ok)
+      return {
+        ok: false,
+        message: 'Failed to update meme!',
+      };
     return await res.json();
   } catch (error) {
     console.error('Service error:', error);

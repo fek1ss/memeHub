@@ -6,11 +6,20 @@ import { Link } from 'react-router-dom';
 import { deleteMeme } from '../../services/memeService';
 import { getAllMemes } from './../../services/memeService';
 import { getAllUsers } from './../../services/userService';
+import EditMemeModal from '../../components/EditMemeModal/EditMemeModal';
 
 const Home = () => {
   const [cards, setCards] = useState([]);
   const [users, setUsers] = useState([]);
   const user = useSelector(state => state.auth.user);
+  const isEditModal = useSelector(
+    state => state.selectedMeme.isEditModal,
+  );
+  const handleUpdateList = updated => {
+    setCards(prev =>
+      prev.map(card => (card.id === updated.id ? updated : card)),
+    );
+  };
 
   useEffect(() => {
     if (user) {
@@ -36,7 +45,7 @@ const Home = () => {
 
   // функция удаления мема
   const handleDelete = async id => {
-    if (confirm('Are you than you want to delete this meme?')) {
+    if (confirm('Are you sure you want to delete this meme?')) {
       try {
         await deleteMeme(id);
         setCards(cards.filter(card => card.id !== id));
@@ -61,6 +70,9 @@ const Home = () => {
           Please <Link to="/login">log in</Link> to access more
           features.
         </p>
+      )}
+      {isEditModal && user.role === 'admin' && (
+        <EditMemeModal onUpdate={handleUpdateList} />
       )}
     </div>
   );

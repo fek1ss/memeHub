@@ -50,3 +50,8 @@
   width: 100%;
   overflow-y: auto;
 }
+
+.btn_delete {
+  background-color: var(--main-color);
+  color: var(--off-white);
+}

@@ -8,6 +8,7 @@ import {
 } from './../../services/memeService';
 import { getAllUsers } from './../../services/userService';
 import { deleteMeme } from '../../services/memeService';
+import EditMemeModal from '../../components/EditMemeModal/EditMemeModal';
 
 const Profile = () => {
   const user = useSelector(state => state.auth.user);
@@ -19,13 +20,21 @@ const Profile = () => {
     error: false,
     value: '',
   });
-
+  const isEditModal = useSelector(
+    state => state.selectedMeme.isEditModal,
+  );
   const handleFileChange = e => {
     setImage_url(e.target.value);
   };
 
   const handleTitleChange = e => {
     setTitle(e.target.value);
+  };
+
+  const handleUpdateList = updated => {
+    setCards(prev =>
+      prev.map(card => (card.id === updated.id ? updated : card)),
+    );
   };
 
   useEffect(() => {
@@ -143,6 +152,7 @@ const Profile = () => {
         users={users}
         handleDelete={handleDelete}
       />
+      {isEditModal && <EditMemeModal onUpdate={handleUpdateList} />}
     </div>
   );
 };
