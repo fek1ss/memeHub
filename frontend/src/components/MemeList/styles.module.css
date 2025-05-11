@@ -3,3 +3,35 @@
   flex-direction: column;
   align-items: center;
 }
+
+.bannedPage {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Make sure it takes the whole viewport height */
+  background-color: #f0f0f0; /* Light background for the banned page */
+}
+
+.bannedContent {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 80%; /* Limit the width of the content */
+}
+
+.bannedTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e53e3e; /* Red color for the title */
+  margin-bottom: 1rem;
+}
+
+.bannedText {
+  font-size: 1.1rem;
+  color: #4a5568; /* Darker text for the message */
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}

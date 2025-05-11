@@ -113,16 +113,16 @@ const CommentSection = ({ mememId }) => {
                   user.role === 'admin' ||
                   user.role === 'moderator') && (
                   <div className={styles.edits}>
-                    {user.role === 'admin' ||
-                      (user.id === comment.author_id && (
-                        <p
-                          onClick={() => {
-                            setEditingId(comment.id);
-                          }}
-                        >
-                          edit
-                        </p>
-                      ))}
+                    {(user.role === 'admin' ||
+                      user.id === comment.author_id) && (
+                      <p
+                        onClick={() => {
+                          setEditingId(comment.id);
+                        }}
+                      >
+                        edit
+                      </p>
+                    )}
                     <p
                       onClick={() => handleDeleteComment(comment.id)}
                     >

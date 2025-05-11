@@ -23,3 +23,19 @@ export const getAllUsers = async () => {
     };
   }
 };
+
+export const banUser = async (banStatus, id) => {
+  try {
+    const response = await fetch(`${API}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'Application/json' },
+      body: JSON.stringify({ isBanned: banStatus }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response;
+  } catch (e) {
+    console.log('server error: ', e);
+  }
+};

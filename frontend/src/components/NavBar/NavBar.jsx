@@ -31,6 +31,9 @@ const NavBar = () => {
       ) : (
         <Link to="/login">Login</Link>
       )}
+      {user.role === 'moderator' && (
+        <Link to="/moder-dashboard">list of users</Link>
+      )}
       <div className={styles.pr_cont}>
         <CgProfile
           onClick={() => navigate('/profile')}

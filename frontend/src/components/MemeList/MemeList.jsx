@@ -1,7 +1,16 @@
+import React from 'react';
 import styles from './styles.module.css';
 import MemeCard from './../MemeCard/MemeCard';
+import { useSelector } from 'react-redux';
+import BannedPage from '../BannedPage';
 
 const MemeList = ({ cards, users, handleDelete }) => {
+  const user = useSelector(state => state.auth.user);
+
+  if (user?.isBanned === 'true') {
+    return <BannedPage />;
+  }
+
   return (
     <div className={styles.memList}>
       {cards.map(card => (

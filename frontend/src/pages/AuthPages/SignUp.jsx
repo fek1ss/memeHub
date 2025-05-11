@@ -8,7 +8,10 @@ const SignUp = () => {
     password: '',
     confirmPassword: '',
   });
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState({
+    message: '',
+    error: true,
+  });
 
   const handleChange = e => {
     setFormData(prev => ({
@@ -34,11 +37,15 @@ const SignUp = () => {
         password: '',
         confirmPassword: '',
       });
-      setMessage(
-        `Registration was successful, please log in to your account.`,
-      );
+      setMessage({
+        message: `Registration was successful, please log in to your account.`,
+        error: false,
+      });
     } else {
-      setMessage(response.message);
+      setMessage({
+        message: response.message,
+        error: true,
+      });
     }
   };
 
@@ -74,7 +81,13 @@ const SignUp = () => {
           required
         />
         <button className={styles.btn_yelow}>Sign Up</button>
-        <p className="error">{message}</p>
+        <p
+          className={`${
+            message.error === true ? 'error' : 'success'
+          }`}
+        >
+          {message.message}
+        </p>
       </form>
     </div>
   );

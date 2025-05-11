@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
+import ListOfUsers from './pages/ListOfUsers/ListOfUsers';
 
 const App = () => {
   const user = useSelector(state => state.auth.user);
@@ -23,6 +24,12 @@ const App = () => {
         <Route
           path="/profile"
           element={user ? <Profile /> : <Login />}
+        />
+        <Route
+          path="/moder-dashboard"
+          element={
+            user && user.role === 'moderator' && <ListOfUsers />
+          }
         />
       </Routes>
     </BrowserRouter>

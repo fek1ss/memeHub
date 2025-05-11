@@ -4,29 +4,32 @@
       "id": "1",
       "username": "damir",
       "password": "$2b$10$YGfd.PxtJfQf.v9eOr9u2.rB7Imq0tGizWJTmdpsZm.AR2i04GBcW",
-      "role": "admin"
+      "role": "admin",
+      "isBanned": "false"
     },
     {
       "id": "2",
       "username": "damir111@gmail.com",
       "password": "$2b$10$yiz7n2x.EUivjVErElLDCeUAg.aVqdXtJuSSWx2FvRhP5J/Hs70bi",
-      "role": "user"
+      "role": "user",
+      "isBanned": "true"
     },
     {
       "id": "4f03",
       "username": "anuar",
       "password": "$2b$10$.CYvnL4VxjtdClv1PP4DNOWvz4QWnT4L7BY4P3Ip20zBpqjWMkeZK",
-      "role": "moderator"
+      "role": "moderator",
+      "isBanned": "false"
+    },
+    {
+      "id": "7050",
+      "username": "isa",
+      "password": "$2b$10$Bevb9Ht5QYddZ95VgLOrvO.8erZtM25rO/AQ2UCFlNj6bl214rpCi",
+      "role": "user",
+      "isBanned": "true"
     }
   ],
   "memes": [
-    {
-      "id": "85a2",
-      "title": "ds",
-      "image_url": "https://steamuserimages-a.akamaihd.net/ugc/1682645181097226523/BE3AEAFCEA0532D3F849B4A1E1DD27B129BBA9CB/?imw=512&amp;imh=512&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true",
-      "created_at": "20:59",
-      "creator_id": "4f03"
-    },
     {
       "id": "9746",
       "title": "",
@@ -91,6 +94,20 @@
       "author_id": "1",
       "text": "фвыа",
       "create_at": "14:19"
+    },
+    {
+      "id": "e25e",
+      "meme_id": "85a2",
+      "author_id": "2",
+      "text": "daa",
+      "create_at": "17:24"
+    },
+    {
+      "id": "0827",
+      "meme_id": "9746",
+      "author_id": "1",
+      "text": ",j",
+      "create_at": "17:50"
     }
   ],
   "likes": [
@@ -123,6 +140,21 @@
       "id": "6181",
       "user_id": "2",
       "meme_id": "9dbf"
+    },
+    {
+      "id": "c9f4",
+      "user_id": "2",
+      "meme_id": "85a2"
+    },
+    {
+      "id": "42f5",
+      "user_id": "4f03",
+      "meme_id": "9746"
+    },
+    {
+      "id": "f046",
+      "user_id": "2",
+      "meme_id": "9746"
     }
   ]
 }

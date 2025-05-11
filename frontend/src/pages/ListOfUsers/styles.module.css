@@ -1,0 +1,17 @@
+.listOfUsers {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.user {
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: var(--off-white);
+}
+
+.btn {
+  background-color: var(--main-color);
+  color: white;
+}

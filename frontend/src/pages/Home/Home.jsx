@@ -71,6 +71,7 @@ const Home = () => {
           features.
         </p>
       )}
+      {/* модальное окно */}
       {isEditModal && user.role === 'admin' && (
         <EditMemeModal onUpdate={handleUpdateList} />
       )}

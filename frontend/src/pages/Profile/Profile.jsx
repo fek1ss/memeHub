@@ -9,6 +9,7 @@ import {
 import { getAllUsers } from './../../services/userService';
 import { deleteMeme } from '../../services/memeService';
 import EditMemeModal from '../../components/EditMemeModal/EditMemeModal';
+import BannedPage from '../../components/BannedPage';
 
 const Profile = () => {
   const user = useSelector(state => state.auth.user);
@@ -125,33 +126,42 @@ const Profile = () => {
   return (
     <div className={styles.profile_page}>
       <h1 className={styles.welcome}>Welcome {user.username}</h1>
-      <form onSubmit={handleAddMeme} className={styles.addMem}>
-        <input
-          type="text"
-          onChange={handleFileChange}
-          placeholder="Link image mem: "
-          value={image_url}
-          className={styles.inp_profile}
-        />
-        <input
-          type="text"
-          onChange={handleTitleChange}
-          placeholder="title mem: "
-          value={title}
-          className={styles.inp_profile}
-        />
-        <button type="submit" className={styles.btn}>
-          Submit
-        </button>
-        <p className={message.error ? styles.error : styles.access}>
-          {message.value}
-        </p>
-      </form>
-      <MemeList
-        cards={cards}
-        users={users}
-        handleDelete={handleDelete}
-      />
+      {user.isBanned === 'false' ? (
+        <>
+          <form onSubmit={handleAddMeme} className={styles.addMem}>
+            <input
+              type="text"
+              onChange={handleFileChange}
+              placeholder="Link image mem: "
+              value={image_url}
+              className={styles.inp_profile}
+            />
+            <input
+              type="text"
+              onChange={handleTitleChange}
+              placeholder="title mem: "
+              value={title}
+              className={styles.inp_profile}
+            />
+            <button type="submit" className={styles.btn}>
+              Submit
+            </button>
+            <p
+              className={message.error ? styles.error : styles.access}
+            >
+              {message.value}
+            </p>
+          </form>
+          <MemeList
+            cards={cards}
+            users={users}
+            handleDelete={handleDelete}
+          />
+        </>
+      ) : (
+        <BannedPage />
+      )}
+
       {isEditModal && <EditMemeModal onUpdate={handleUpdateList} />}
     </div>
   );

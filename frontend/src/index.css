@@ -21,6 +21,10 @@
   color: red;
 }
 
+.success {
+  color: white;
+}
+
 #root {
   height: 100vh;
 }
