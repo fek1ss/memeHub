@@ -22,7 +22,6 @@ const OptionsMenu = ({ onDelete, memeId, meme }) => {
   const handleEdit = () => {
     dispatch(selectMeme(meme));
     handleClose();
-    console.log(meme);
   };
 
   return (

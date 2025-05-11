@@ -14,9 +14,6 @@
   color: var(--off-white);
 }
 
-.username {
-}
-
 .addMem {
   display: flex;
   flex-direction: column;

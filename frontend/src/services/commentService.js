@@ -49,3 +49,37 @@ export const addComment = async comment => {
     throw error;
   }
 };
+
+// DELETE
+export const deleteComment = async id => {
+  try {
+    const response = await fetch(`${API}/${id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok)
+      return { ok: false, message: 'Failed to delete comment!' };
+  } catch (error) {
+    console.error('Service error:', error);
+    throw error;
+  }
+};
+
+// UPDATE
+export const editComment = async ({ id, comment }) => {
+  try {
+    const response = await fetch(`${API}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'Application/json' },
+      body: JSON.stringify(comment),
+    });
+    if (!response.ok) {
+      return {
+        ok: false,
+        message: 'Failed to update comment',
+      };
+    }
+    return await response.json();
+  } catch (error) {
+    console.log('Server error: ', error);
+  }
+};

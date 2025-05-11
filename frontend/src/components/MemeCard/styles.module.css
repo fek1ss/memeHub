@@ -55,3 +55,7 @@
   background-color: var(--main-color);
   color: var(--off-white);
 }
+
+.like {
+  cursor: pointer;
+}

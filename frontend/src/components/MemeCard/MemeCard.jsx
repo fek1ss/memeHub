@@ -1,9 +1,16 @@
 import { useSelector } from 'react-redux';
 import styles from './styles.module.css';
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CommentSection from '../CommentSection/CommentSection';
 import OptionsMenu from '../../components/OptionsMenu';
+import { FaRegHeart } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa6';
+import {
+  addLike,
+  deleteLike,
+  getLikes,
+} from './../../services/likeService';
 
 const MemeCard = ({
   title,
@@ -18,6 +25,9 @@ const MemeCard = ({
   const creator = users.find(user => user.id === creator_id);
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isLike, setIsLike] = useState(false);
+  const [likesCount, setLikesCount] = useState(0);
+  const [likeId, setLikeId] = useState(null);
 
   const currentMeme = {
     id,
@@ -25,6 +35,51 @@ const MemeCard = ({
     image_url,
     created_at,
     creator_id,
+  };
+
+  // Получить все лайки мема
+  useEffect(() => {
+    const fetchLikes = async () => {
+      const response = await getLikes(id);
+      if (response.ok) {
+        setLikesCount(response.likes.length);
+        const userLiked = response.likes.some(
+          like => like.user_id === user.id,
+        );
+        setIsLike(userLiked);
+      }
+    };
+
+    fetchLikes();
+  }, [id, user.id]);
+
+  const handleLike = async () => {
+    try {
+      const newLike = {
+        user_id: user.id,
+        meme_id: id,
+      };
+      const response = await addLike(newLike);
+      if (response.ok && response.data) {
+        setIsLike(true);
+        setLikeId(response.data.id); // предполагаем, что сервер возвращает созданный like с id
+        setLikesCount(prev => prev + 1);
+      }
+    } catch (error) {
+      console.error('Ошибка при добавлении лайка:', error);
+    }
+  };
+
+  const handleDeleteLike = async () => {
+    if (!likeId) return;
+    try {
+      await deleteLike(likeId);
+      setIsLike(false);
+      setLikeId(null);
+      setLikesCount(prev => prev - 1);
+    } catch (error) {
+      console.error('Ошибка при удалении лайка:', error);
+    }
   };
 
   return (
@@ -54,8 +109,26 @@ const MemeCard = ({
           >
             💬
           </span>
-          <span>👍</span>
-          <button onClick={() => handleDelete(id)} className={styles.btn_delete}>delete</button>
+
+          {isLike ? (
+            <FaHeart onClick={handleDeleteLike} />
+          ) : (
+            <FaRegHeart
+              className={styles.like}
+              onClick={handleLike}
+            />
+          )}
+
+          <span>{likesCount}</span>
+
+          {location.pathname === '/' && user.role === 'moderator' && (
+            <button
+              onClick={() => handleDelete(id)}
+              className={styles.btn_delete}
+            >
+              delete
+            </button>
+          )}
         </div>
       </div>
 
