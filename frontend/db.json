@@ -4,63 +4,109 @@
       "id": "1",
       "username": "damir",
       "password": "$2b$10$YGfd.PxtJfQf.v9eOr9u2.rB7Imq0tGizWJTmdpsZm.AR2i04GBcW",
-      "role": "admin"
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "2",
       "username": "damir111@gmail.com",
       "password": "$2b$10$yiz7n2x.EUivjVErElLDCeUAg.aVqdXtJuSSWx2FvRhP5J/Hs70bi",
-      "role": "user"
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "4f03",
       "username": "anuar",
       "password": "$2b$10$.CYvnL4VxjtdClv1PP4DNOWvz4QWnT4L7BY4P3Ip20zBpqjWMkeZK",
-      "role": "moderator"
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    }
+  ],
+  "roles": [
+    {
+      "id": "r1",
+      "name": "admin",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "r2",
+      "name": "user",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "r3",
+      "name": "moderator",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    }
+  ],
+  "user_roles": [
+    {
+      "user_id": "1",
+      "role_id": "r1",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "user_id": "2",
+      "role_id": "r2",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "user_id": "4f03",
+      "role_id": "r3",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     }
   ],
   "memes": [
     {
-      "id": "85a2",
-      "title": "ds",
-      "image_url": "https://steamuserimages-a.akamaihd.net/ugc/1682645181097226523/BE3AEAFCEA0532D3F849B4A1E1DD27B129BBA9CB/?imw=512&amp;imh=512&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true",
-      "created_at": "20:59",
-      "creator_id": "4f03"
-    },
-    {
       "id": "9746",
-      "title": "",
+      "title": "тралалело тралала",
       "image_url": "https://i.pinimg.com/736x/12/7c/c3/127cc3ac574e62f658f04824582defc5.jpg",
-      "created_at": "21:31",
-      "creator_id": "2"
+      "creator_id": "2",
+      "created_at": "2025-05-11T21:31:00Z",
+      "updated_at": "2025-05-11T21:31:00Z",
+      "deleted_at": null
     },
     {
       "id": "a462",
-      "title": "",
+      "title": "тун тун тун тун сахур",
       "image_url": "https://i.pinimg.com/736x/69/af/98/69af98b7d5b3793af6e1e0c591d88cd2.jpg",
-      "created_at": "22:17",
-      "creator_id": "2"
+      "creator_id": "2",
+      "created_at": "2025-05-11T22:17:00Z",
+      "updated_at": "2025-05-11T22:17:00Z",
+      "deleted_at": null
     },
     {
       "id": "9dbf",
-      "title": "DAMIR",
+      "title": "бананини бомбардино",
       "image_url": "https://avatars.mds.yandex.net/i?id=f623a35d982a1fbc9e5aff1543ed556f_l-6436951-images-thumbs&n=13",
-      "created_at": "11:28",
-      "creator_id": "2"
-    },
-    {
-      "id": "2bd8",
-      "title": "fdsa",
-      "image_url": "adfs",
-      "created_at": "18:41",
-      "creator_id": "2"
+      "creator_id": "2",
+      "created_at": "2025-05-11T11:28:00Z",
+      "updated_at": "2025-05-11T11:28:00Z",
+      "deleted_at": null
     },
     {
       "id": "7c56",
       "title": "hghgh",
       "image_url": "https://yandex-images.clstorage.net/10k0J3s18/fbd394Q_tj/cn2ljVQCSRinGntuzFruYB6RMRf6ls_m3CtJJ_9ZqRgRnl6O2jAoL799u2Ix4jrKlx4UzdlbQx8AeruL8g2yNWcptcETQFBG919jOsRZ62IDzHIG5szLu8ZpFXi6VaYVRJ1l5K9IDEfDGscXS8p3k88eQ9TGCA8iO2Kqht4UuE1VfbCkZRMiG6wcAWDMU_1TCM0ZP8zXx7r4OCd6hCSLZRDdWfefYTpa5SXEPUTuf4DkC3_jmwQ2NQgkqY7BP4Joclm6tk82KRCSKxNfwF79dC_TCRHjz-O-4SwBWIsWok8n2G3Bo2MCXMIv5Rlg72SQ1A9T_LAgIzIdE7Kg3D6YW1Z1kp1xPhUHqjsnePRg3kcw7Ss66-z1iOQEOnaLIKlFHfh12L5zLG3NKec5Y_JjgesvZfSsNTsnLjqRoc4YkVtURoC7UBM3HbclLHHvRfB8BPgpIPzc6pLEKix_swOiRh3pXe-JXglf6zHvHXr9RpXsDkLWmzkmFQEGv6D7JZxFXHGcqF8fNTKMBh5033_BXxPZLhTM8sC13T8xcqkLh28Yxnzyr1sIS8gZ9iNu0Ha76i9p7oUoDR4lIbqO8z6yTXZZp6hMIykZmgUlZstA3G401Dg0yvDyiNYhGmKGKLx9DNd3_YRQPV_tIOsXRuxGsek1ScCdNTM4HAejoMclvHhzaImhdQUPAbolJ37JWOdsL9QLFvnh47vmDCBeriy4bSDqcf60bQFO1inJKETqXIDKL1DdkQsFJzAgmJvnJJhFXHiriHQ1CTOIPjt55X3YaBbcKx7p2syT2AQ9YaEBpGUj2nLNqEw5f_QL5wFN1mul7SxDyrEJNyc1G42bzjWwRG5kmZZIGxAXsxgwZORM_kEXzB0zwd_It90HGWW7IIReOMZpzY1cK1fDCf4pZNVLvtYqVsWtMAEsHiqzueUqg3RAb6GDTR0oLKArIX7ZXehuKPowOcfD9qrYDgVYhRQ",
-      "created_at": "19:00",
-      "creator_id": "2"
+      "creator_id": "2",
+      "created_at": "2025-05-11T19:00:00Z",
+      "updated_at": "2025-05-11T19:00:00Z",
+      "deleted_at": null
     }
   ],
   "comments": [
@@ -69,60 +115,144 @@
       "meme_id": "927b",
       "author_id": "2",
       "text": "LOL! This is hilarious 😂",
-      "created_at": "12:00"
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "2",
       "meme_id": "32fe",
       "author_id": "1",
       "text": "Very relatable!",
-      "created_at": "12:30"
+      "created_at": "2025-05-11T12:30:00Z",
+      "updated_at": "2025-05-11T12:30:00Z",
+      "deleted_at": null
     },
     {
       "id": "5e40",
       "meme_id": "927b",
       "author_id": "2",
       "text": "asdf",
-      "create_at": "13:40"
+      "created_at": "2025-05-11T13:40:00Z",
+      "updated_at": "2025-05-11T13:40:00Z",
+      "deleted_at": null
     },
     {
       "id": "f18c",
       "meme_id": "927b",
       "author_id": "1",
       "text": "фвыа",
-      "create_at": "14:19"
+      "created_at": "2025-05-11T14:19:00Z",
+      "updated_at": "2025-05-11T14:19:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "4861",
+      "meme_id": "9dbf",
+      "author_id": "4f03",
+      "text": "asdfghj",
+      "created_at": "2025-05-11T17:26:00Z",
+      "updated_at": "2025-05-11T17:26:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "12af",
+      "meme_id": "9dbf",
+      "author_id": "1",
+      "text": "asderfg",
+      "created_at": "2025-05-11T17:27:00Z",
+      "updated_at": "2025-05-11T17:27:00Z",
+      "deleted_at": null
     }
   ],
   "likes": [
     {
       "id": "41d0",
       "user_id": "1",
-      "meme_id": "85a2"
+      "meme_id": "85a2",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "737f",
       "user_id": "1",
-      "meme_id": "85a2"
+      "meme_id": "85a2",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "2c79",
       "user_id": "1",
-      "meme_id": "9746"
+      "meme_id": "9746",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "2c84",
       "user_id": "1",
-      "meme_id": "a462"
+      "meme_id": "a462",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "6a21",
       "user_id": "4f03",
-      "meme_id": "85a2"
+      "meme_id": "85a2",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "6181",
       "user_id": "2",
-      "meme_id": "9dbf"
+      "meme_id": "9dbf",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "6c24",
+      "user_id": "4f03",
+      "meme_id": "9746",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c95a",
+      "user_id": "4f03",
+      "meme_id": "9dbf",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "aaa8",
+      "user_id": "4f03",
+      "meme_id": "7c56",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "fa1b",
+      "user_id": "1",
+      "meme_id": "2bd8",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "00b1",
+      "user_id": "1",
+      "meme_id": "9dbf",
+      "created_at": "2025-05-11T12:00:00Z",
+      "updated_at": "2025-05-11T12:00:00Z",
+      "deleted_at": null
     }
   ]
 }
