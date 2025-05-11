@@ -21,7 +21,7 @@
 // };
 
 import bcrypt from 'bcryptjs';
-import API_URL from '../baseUrl';
+const API_URL = 'http://localhost:8080';
 
 export const loginRequest = async ({ username, password }) => {
   try {
@@ -58,17 +58,47 @@ export const loginRequest = async ({ username, password }) => {
   }
 };
 
-export const registerRequest = async ({ username, password }) => {
+// REGISTRATION
+
+export const registerRequest = async ({
+  username,
+  password,
+  confirmPassword,
+}) => {
+  if (password != confirmPassword) {
+    return {
+      ok: false,
+      message: 'Passwords do not match!',
+    };
+  }
+
+  const checkRes = await fetch(
+    `http://localhost:8080/users?username=${username}`,
+  );
+  const existingUsers = await checkRes.json();
+
+  if (existingUsers.length > 0) {
+    return {
+      ok: false,
+      message: 'User already exists',
+    };
+  }
+
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(password, salt);
+
   try {
     const res = await fetch(`${API_URL}/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({
+        username,
+        password: hashedPassword,
+        role: 'user',
+      }),
     });
 
-    if (res.ok) {
-      return { ok: true };
-    }
+    if (res.ok) return { ok: true };
 
     const data = await res.json();
     return {

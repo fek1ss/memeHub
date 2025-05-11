@@ -3,7 +3,7 @@ import styles from '../../styles/auth.module.css';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../reducers/AuthReducer';
-import { loginRequest } from './authAPI';
+import { loginRequest } from '../../services/authAPI';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <div className={styles.auth}>
       <form onSubmit={handleLogin} className={styles.form_auth}>
-        <h1>Login</h1>
+        <h1 className={styles.auth_h1}>Login</h1>
         <input
           className={styles.auth_inp}
           type="text"

@@ -14,14 +14,14 @@ const AuthFlipContainer = () => {
         <button
           onClick={() => setIsLoginView(true)}
           disabled={isLoginView}
-          className={styles.btn_green}
+          className={styles.btn_login}
         >
           Login
         </button>
         <button
           onClick={() => setIsLoginView(false)}
           disabled={!isLoginView}
-          className={styles.btn_yellow}
+          className={styles.btn_register}
         >
           Sign Up
         </button>

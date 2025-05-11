@@ -3,18 +3,27 @@ import styles from './styles.module.css';
 import MemeList from './../../components/MemeList/MemeList';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import usersRequest from '../../features/users/usersAPI';
-import memeRequest from '../../features/memes/memeAPI';
-import API_URL from './../../features/baseUrl';
+import { deleteMeme } from '../../services/memeService';
+import { getAllMemes } from './../../services/memeService';
+import { getAllUsers } from './../../services/userService';
+import EditMemeModal from '../../components/EditMemeModal/EditMemeModal';
 
 const Home = () => {
   const [cards, setCards] = useState([]);
   const [users, setUsers] = useState([]);
   const user = useSelector(state => state.auth.user);
+  const isEditModal = useSelector(
+    state => state.selectedMeme.isEditModal,
+  );
+  const handleUpdateList = updated => {
+    setCards(prev =>
+      prev.map(card => (card.id === updated.id ? updated : card)),
+    );
+  };
 
   useEffect(() => {
     if (user) {
-      memeRequest()
+      getAllMemes()
         .then(response => {
           setCards(response.memes);
         })
@@ -22,7 +31,7 @@ const Home = () => {
           console.error('Error fetching memes: ', err);
         });
 
-      usersRequest()
+      getAllUsers()
         .then(response => {
           setUsers(response.users);
         })
@@ -36,17 +45,15 @@ const Home = () => {
 
   // функция удаления мема
   const handleDelete = async id => {
-    try {
-      const response = await fetch(`${API_URL}/memes/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) setCards(cards.filter(card => card.id !== id));
-      else {
-        alert('Failed to delete meme');
+    if (confirm('Are you sure you want to delete this meme?')) {
+      try {
+        await deleteMeme(id);
+        setCards(cards.filter(card => card.id !== id));
+      } catch (error) {
+        console.error('Error deleting meme:', error);
       }
-    } catch (error) {
-      console.error('Error deleting meme:', error);
+    } else {
+      console.log('the user canceled the removal of the meme');
     }
   };
 
@@ -59,10 +66,13 @@ const Home = () => {
           handleDelete={handleDelete}
         />
       ) : (
-        <p>
+        <p className={styles.home_p}>
           Please <Link to="/login">log in</Link> to access more
           features.
         </p>
+      )}
+      {isEditModal && user.role === 'admin' && (
+        <EditMemeModal onUpdate={handleUpdateList} />
       )}
     </div>
   );

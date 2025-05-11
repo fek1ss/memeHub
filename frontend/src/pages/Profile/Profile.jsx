@@ -2,9 +2,13 @@ import styles from './styles.module.css';
 import MemeList from './../../components/MemeList/MemeList';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import memeRequest from './../../features/memes/memeAPI';
-import usersRequest from './../../features/users/usersAPI';
-import API_URL from '../../features/baseUrl';
+import {
+  getAllMemes,
+  createMeme,
+} from './../../services/memeService';
+import { getAllUsers } from './../../services/userService';
+import { deleteMeme } from '../../services/memeService';
+import EditMemeModal from '../../components/EditMemeModal/EditMemeModal';
 
 const Profile = () => {
   const user = useSelector(state => state.auth.user);
@@ -16,10 +20,26 @@ const Profile = () => {
     error: false,
     value: '',
   });
+  const isEditModal = useSelector(
+    state => state.selectedMeme.isEditModal,
+  );
+  const handleFileChange = e => {
+    setImage_url(e.target.value);
+  };
+
+  const handleTitleChange = e => {
+    setTitle(e.target.value);
+  };
+
+  const handleUpdateList = updated => {
+    setCards(prev =>
+      prev.map(card => (card.id === updated.id ? updated : card)),
+    );
+  };
 
   useEffect(() => {
     if (user) {
-      memeRequest(user.id)
+      getAllMemes(user.id)
         .then(response => {
           setCards(response.memes);
         })
@@ -27,7 +47,7 @@ const Profile = () => {
           console.error('Error fetching memes: ', err);
         });
 
-      usersRequest()
+      getAllUsers()
         .then(response => {
           setUsers(response.users);
         })
@@ -42,31 +62,22 @@ const Profile = () => {
   // ===============================================
   // функция удаления мема
   const handleDelete = async id => {
-    try {
-      const response = await fetch(`${API_URL}/memes/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) setCards(cards.filter(card => card.id !== id));
-      else {
-        alert('Failed to delete meme');
+    if (confirm('Are you than you want to delete this meme?')) {
+      try {
+        await deleteMeme(id);
+        setCards(cards.filter(card => card.id !== id));
+      } catch (error) {
+        console.error('Error deleting meme:', error);
       }
-    } catch (error) {
-      console.error('Error deleting meme:', error);
+    } else {
+      console.log('the user canceled the removal of the meme');
     }
   };
   // ===============================================
-  const handleFileChange = e => {
-    setImage_url(e.target.value);
-  };
-
-  const handleTitleChange = e => {
-    setTitle(e.target.value);
-  };
 
   const handleAddMeme = async e => {
     e.preventDefault();
-    if (!title || !image_url) {
+    if (!image_url) {
       setMessage({
         error: true,
         value: 'Please provide title or image mem',
@@ -84,31 +95,26 @@ const Profile = () => {
       creator_id: user.id,
     };
 
-    try {
-      const memeResponse = await fetch(`${API_URL}/memes`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(meme),
+    const res = await createMeme(meme);
+    if (!res.ok) {
+      setMessage({
+        error: res.ok,
+        value: res.message,
       });
-
-      if (!memeResponse.ok) {
-        throw new Error('Failed to add meme');
-      }
-
-      updateList(meme);
+    }
+    updateList(meme);
+    setTitle('');
+    setImage_url('');
+    setMessage({
+      error: res.ok,
+      value: res.message,
+    });
+    setTimeout(() => {
       setMessage({
         error: false,
-        value: 'Meme added successfully:',
+        value: '',
       });
-      setTimeout(() => {
-        setMessage({
-          error: false,
-          value: '',
-        });
-      }, 2000);
-    } catch (err) {
-      setMessage({ error: true, value: `Server error: ${err}` });
-    }
+    }, 1000);
   };
   // =================
   // Обновление списка мемов
@@ -118,29 +124,35 @@ const Profile = () => {
 
   return (
     <div className={styles.profile_page}>
+      <h1 className={styles.welcome}>Welcome {user.username}</h1>
       <form onSubmit={handleAddMeme} className={styles.addMem}>
         <input
           type="text"
           onChange={handleFileChange}
-          placeholder="image mem: "
+          placeholder="Link image mem: "
+          value={image_url}
           className={styles.inp_profile}
         />
         <input
           type="text"
           onChange={handleTitleChange}
           placeholder="title mem: "
+          value={title}
           className={styles.inp_profile}
         />
         <button type="submit" className={styles.btn}>
           Submit
         </button>
-        <p>{message.value}</p>
+        <p className={message.error ? styles.error : styles.access}>
+          {message.value}
+        </p>
       </form>
       <MemeList
         cards={cards}
         users={users}
         handleDelete={handleDelete}
       />
+      {isEditModal && <EditMemeModal onUpdate={handleUpdateList} />}
     </div>
   );
 };

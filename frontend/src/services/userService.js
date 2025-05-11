@@ -1,8 +1,8 @@
-import BASE_API from '../baseUrl';
+const API = 'http://localhost:8080/users';
 
-const usersRequest = async () => {
+export const getAllUsers = async () => {
   try {
-    const response = await fetch(`${BASE_API}/users`);
+    const response = await fetch(API);
     if (response.ok) {
       const users = await response.json();
       return {
@@ -23,5 +23,3 @@ const usersRequest = async () => {
     };
   }
 };
-
-export default usersRequest;
